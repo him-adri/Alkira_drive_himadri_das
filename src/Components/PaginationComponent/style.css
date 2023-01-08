@@ -1,0 +1,14 @@
+.contianer{
+    float: right;
+    margin: 1rem;
+}
+.pagination{
+    padding: 0.5rem;
+    margin: 1rem;
+    font-weight: 900;
+}
+/*     border: 1px solid #004589;
+ */
+li{
+    background-color: #004589;
+}

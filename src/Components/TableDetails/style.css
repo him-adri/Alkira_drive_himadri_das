@@ -1,0 +1,27 @@
+.table-border {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1rem !important;
+  border: none !important;
+  border-radius: 5px;
+}
+.table-headings {
+  background-color: #004589 !important;
+  color: white;
+  padding: 1rem !important;
+  text-align: center;
+  /* display: block !important; */
+}
+
+.table-border th {
+  padding: 0.5rem 1rem;
+  font-family: "Inter", sans-serif;
+}
+td {
+  padding: 1rem;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  background-color: #f7fbfa !important;
+}
