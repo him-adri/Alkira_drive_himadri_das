@@ -7,7 +7,6 @@ import SideBar from "../Components/SideBar/SideBar";
 import Table from "../Components/TableDetails/Table";
 import Heading from "../Components/Heading/Heading";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Footer from "../Components/Footer/footer";
 
 const Home = () => {
   const [teams, setTeams] = useState([]);
@@ -15,12 +14,19 @@ const Home = () => {
   const [isSelected, setIsSelected] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [teamsPerPage, setTeamsPerPage] = useState(10);
+  const [games, setGames] = useState([]);
+  const [selectedGame, setselectedGame] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get(API_CALL).then((res) => {
       setLoading(true);
       setTeams(res.data.data);
+      setLoading(false);
+    });
+    axios.get(DETAIL_API_CALL).then((res) => {
+      console.log(res.data.data, "game team");
+      setGames(res.data.data);
       setLoading(false);
     });
   }, []);
@@ -40,7 +46,15 @@ const Home = () => {
   };
   var handleChange = (id) => {
     setIsSelected(id);
+    var selectedGames = games.filter((item)=> {
+      if(item.home_team.id == id){
+        return item;
+      }}
+    )
+    setselectedGame(selectedGames[0]);
   };
+  
+
   if (isSelected) {
     console.log(isSelected, "is Slected");
   }
@@ -98,7 +112,7 @@ const Home = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   {" "}
-                  <SideBar id={isSelected} />{" "}
+                  <SideBar id={isSelected} selectedGame = {selectedGame}/>{" "}
                 </Offcanvas.Body>
               </Offcanvas>
             </>
