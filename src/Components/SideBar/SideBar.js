@@ -18,7 +18,7 @@ function SideBar({ id, selectedGame }) {
             <p>{selectedGame?.home_team?.full_name}</p>
           </div>
           <div className="flex-div">
-            <p>Total selectedGame Played in 2021:</p>
+            <p>Total Games Played in 2021:</p>
             <p>{Math.ceil(Math.random() * 10)}</p>
           </div>
           <p className="random-details">
