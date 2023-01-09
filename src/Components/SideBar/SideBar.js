@@ -13,14 +13,10 @@ function SideBar({ id }) {
 
   function getData() {
     setLoading(true);
-    axios.get(DETAIL_API_CALL + `/${id}`).then((res) => {
+    axios.get(`https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}`).then((res) => {
       console.log(res.data.home_team.id,"home team")
-      if(id === res.data.id){
         setDetails(res.data);
         setLoading(false);
-      }else{
-        alert("Data Cant")
-      }
     });
   }
   console.log("details", details);

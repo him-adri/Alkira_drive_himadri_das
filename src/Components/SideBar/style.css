@@ -1,7 +1,7 @@
 .flex-div{
-    display: flex;
+    display: flex !important;
     align-items: center;
-    gap: 1rem;
+    gap: 1rem !important;
 }
 .loading{
     font-size: 19px;

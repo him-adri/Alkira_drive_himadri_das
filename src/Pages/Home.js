@@ -42,7 +42,7 @@ const Home = () => {
     setIsSelected(id);
   };
   if (isSelected) {
-    // console.log(isSelected);
+    console.log(isSelected, "is Slected");
   }
   return (
     <>
