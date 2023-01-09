@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Search from "../Components/Search/Search";
 import axios from "axios";
-import { API_CALL } from "../Constant";
+import { API_CALL, DETAIL_API_CALL } from "../Constant";
 import Page from "../Components/PaginationComponent/Page";
 import SideBar from "../Components/SideBar/SideBar";
 import Table from "../Components/TableDetails/Table";

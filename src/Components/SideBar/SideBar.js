@@ -1,28 +1,41 @@
 import axios from "axios";
 import "./style.css";
 import React, { useEffect, useState } from "react";
-import { DETAIL_API_CALL } from "../../Constant";
+import { API_CALL, DETAIL_API_CALL } from "../../Constant";
 
 function SideBar({ id }) {
   const [details, setDetails] = useState({});
+  const [games, setGames] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getData();
+    getDataTeams();
+  }, []);
+  useEffect(() => {
+    getDataGames();
   }, []);
 
-  function getData() {
+  function getDataTeams() {
     setLoading(true);
-    axios.get(`https://www.balldontlie.io/api/v1/games?seasons[]=2021&team_ids[]=${id}`).then((res) => {
-      console.log(res.data.home_team.id,"home team")
-        setDetails(res.data);
-        setLoading(false);
+    axios.get(API_CALL + `${id}`).then((res) => {
+      console.log(res.data, "home team");
+      setDetails(res.data);
+      setLoading(false);
     });
   }
-  console.log("details", details);
+  function getDataGames() {
+    setLoading(true);
+    axios.get(DETAIL_API_CALL + `${id}`).then((res) => {
+      console.log(res.data, "game team");
+      setGames(res.data);
+      setLoading(false);
+    });
+  }
+
+  console.log("details", id);
   return (
     <>
-      {loading ? (
+      {loading || !details ? (
         <p>
           <h3 className="loading">Kindly Wait your data is loading🔃</h3>
         </p>
@@ -30,7 +43,7 @@ function SideBar({ id }) {
         <>
           <div className="flex-div">
             <p>Team Full Name:</p>
-            <p>{details.home_team.full_name}</p>
+            <p>{details?.full_name}</p>
           </div>
           <div className="flex-div">
             <p>Total Games Played in 2021:</p>
@@ -44,31 +57,31 @@ function SideBar({ id }) {
               <b>Date:</b>
             </p>
             {/* <p>{details.date}</p> */}
-            <p>{details.date ? details.date.slice(0, 10) : ""}</p>
+            <p>{games?.date ? games?.date.slice(0, 10) : ""}</p>
           </div>
           <div className="flex-div">
             <p>
               <b>Home Team:</b>
             </p>
-            <p>{details.home_team.name}</p>
+            <p>{details?.name}</p>
           </div>
           <div className="flex-div">
             <p>
               <b>Home Team Score:</b>
             </p>
-            <p>{details.home_team_score}</p>
+            <p>{games?.home_team_score}</p>
           </div>
           <div className="flex-div">
             <p>
               <b>Visitor Team:</b>
             </p>
-            <p>{details.visitor_team.full_name}</p>
+            <p>{games?.visitor_team?.full_name}</p>
           </div>
           <div className="flex-div">
             <p>
               <b>Visitor Team Score:</b>
             </p>
-            <p>{details.visitor_team_score}</p>
+            <p>{games?.visitor_team_score}</p>
           </div>
         </>
       )}

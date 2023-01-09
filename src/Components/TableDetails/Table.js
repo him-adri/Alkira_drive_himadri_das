@@ -26,6 +26,7 @@ const Table = ({teams, handleChange}) => {
           </thead>
           <tbody>
             {teams.map((teamData) => {
+              // console.log(teamData,"teamData");
               return (
                 <tr onClick={() => {handleChange(teamData.id)}}>
                   <td>{teamData.name}</td>
