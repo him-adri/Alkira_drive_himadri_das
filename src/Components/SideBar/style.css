@@ -1,12 +1,21 @@
-.flex-div{
-    display: flex !important;
-    align-items: center;
-    gap: 1rem !important;
+.flex-div {
+  display: flex !important;
+  align-items: center;
+  gap: 1rem !important;
 }
-.loading{
-    font-size: 19px;
-    align-items: flex-start;
+.loading {
+  font-size: 19px;
+  align-items: flex-start;
+  font-family: "Inter", sans-serif;
 }
-.random-details{
-    margin-top: 1rem;
+.random-details {
+  margin-top: 1rem;
+}
+.team-details {
+  position: absolute;
+  right: 0px;
+  width: 200px;
+}
+.random{
+    margin-top: -25px;
 }

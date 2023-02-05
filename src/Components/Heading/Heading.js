@@ -6,7 +6,7 @@ const Heading = () => {
   return (
     <div className="heading">
        <motion.h1
-          initial={{ y: 50, opacity: 0 }}
+          initial={{ x: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9 }}
         >

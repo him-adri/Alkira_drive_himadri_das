@@ -25,3 +25,6 @@ td {
   font-weight: 800;
   background-color: #f7fbfa !important;
 }
+td::selection{
+  background-color: red;
+}

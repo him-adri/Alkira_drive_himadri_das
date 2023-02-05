@@ -32,7 +32,13 @@ const Home = () => {
   }, []);
 
   var filteredCoins = teams.filter((item) => {
-    if (item.name.toLowerCase().includes(search.toLowerCase())) {
+    if (
+      item.full_name.toLowerCase().includes(search.toLowerCase()) ||
+      item.name.toLowerCase().includes(search.toLowerCase()) ||
+      item.abbreviation.toLowerCase().includes(search.toLowerCase()) ||
+      item.conference.toLowerCase().includes(search.toLowerCase()) ||
+      item.division.toLowerCase().includes(search.toLowerCase())
+    ) {
       return item;
     }
   });
@@ -44,16 +50,24 @@ const Home = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  var sortList = () => {
+    var cityArray = teams;
+    cityArray.sort().reverse();
+    console.log(cityArray, "cityArray");
+    setTeams(cityArray);
+    console.log(cityArray);
+  };
+
   var handleChange = (id) => {
     setIsSelected(id);
-    var selectedGames = games.filter((item)=> {
-      if(item.home_team.id == id){
+    var selectedGames = games.filter((item) => {
+      if (item.home_team.id == id) {
         return item;
-      }}
-    )
+      }
+    });
     setselectedGame(selectedGames[0]);
   };
-  
 
   if (isSelected) {
     console.log(isSelected, "is Slected");
@@ -100,6 +114,7 @@ const Home = () => {
                 <Table
                   teams={search ? filteredCoins : currentTeams}
                   handleChange={handleChange}
+                  setTeams={setTeams}
                 />
               )}
               <Offcanvas
@@ -112,18 +127,21 @@ const Home = () => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   {" "}
-                  <SideBar id={isSelected} selectedGame = {selectedGame}/>{" "}
+                  <SideBar id={isSelected} selectedGame={selectedGame} />{" "}
                 </Offcanvas.Body>
               </Offcanvas>
             </>
           )}
         </div>
         <div>
-          <Page
-            teamsPerPage={teamsPerPage}
-            totalTeams={teams.length}
-            paginate={paginate}
-          />
+          {!search && (
+            <Page
+              teamsPerPage={teamsPerPage}
+              totalTeams={teams.length}
+              paginate={paginate}
+              // sortList={sortList}
+            />
+          )}
         </div>
       </div>
     </>

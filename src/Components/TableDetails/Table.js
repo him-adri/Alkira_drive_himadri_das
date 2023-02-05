@@ -1,10 +1,18 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BsFillCaretUpFill } from "react-icons/bs";
+import { API_CALL } from "../../Constant";
 import "./style.css";
 
-import { BsFillCaretUpFill } from "react-icons/bs";
-// import SideBar from "../Side Bar/SideBar";
+const Table = ({ teams, handleChange, setTeams }) => {
 
-const Table = ({teams, handleChange}) => {
+  var sortList = () => {
+    var cityArray = teams;
+    cityArray.sort().reverse();
+    console.log(cityArray, "cityArray");
+    setTeams(cityArray);
+  };
+
   return (
     <div>
       <div className="table">
@@ -13,10 +21,13 @@ const Table = ({teams, handleChange}) => {
             <tr className="table-headings">
               <th scope="col">Team Name</th>
               <th scope="col">
-                City{" "}
+                City
                 <span>
-                  {" "}
-                  <BsFillCaretUpFill />{" "}
+                  <BsFillCaretUpFill
+                    onClick={() => {
+                      return sortList();
+                    }}
+                  />{" "}
                 </span>
               </th>
               <th scope="col">Abbreviation</th>
@@ -26,9 +37,14 @@ const Table = ({teams, handleChange}) => {
           </thead>
           <tbody>
             {teams.map((teamData) => {
-              // console.log(teamData,"teamData");
+              console.log(teamData, "teamData");
               return (
-                <tr onClick={() => {handleChange(teamData.id)}}>
+                <tr
+                  id="team-row"
+                  onClick={() => {
+                    handleChange(teamData.id);
+                  }}
+                >
                   <td>{teamData.name}</td>
                   <td>{teamData.city}</td>
                   <td>{teamData.abbreviation}</td>

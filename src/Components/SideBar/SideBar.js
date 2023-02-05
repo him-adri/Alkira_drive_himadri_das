@@ -9,51 +9,51 @@ function SideBar({ id, selectedGame }) {
     <>
       {!selectedGame ? (
         <p>
-          <h3 className="loading">Kindly Wait your data is loading🔃</h3>
+          <h3 className="loading">Can't show details for the specific team.</h3>
         </p>
       ) : (
         <>
           <div className="flex-div">
-            <p>Team Full Name:</p>
-            <p>{selectedGame?.home_team?.full_name}</p>
+            <p>Team Full Name</p>
+            <p className="team-details">{selectedGame?.home_team?.full_name}</p>
           </div>
           <div className="flex-div">
-            <p>Total Games Played in 2021:</p>
-            <p>{Math.ceil(Math.random() * 10)}</p>
+            <p>Games Played in {selectedGame.date.substring(0,4).toString()}</p>
+            <p className="team-details">{Math.floor(Math.random() * 50)}</p>
           </div>
           <p className="random-details">
-            <b>Random Game selectedGame: </b>
+            <b><p>Random Game Details</p></b>
           </p>
           <div className="flex-div">
-            <p>
-              <b>Date:</b>
+            <p className="team-details-heading">
+              <b>Date</b>
             </p>
             {/* <p>{selectedGame.date}</p> */}
-            <p>{selectedGame?.date ? selectedGame?.date.slice(0, 10) : ""}</p>
+            <b><p className="team-details random">{selectedGame?.date ? selectedGame?.date.slice(0, 10) : ""}</p></b>
           </div>
           <div className="flex-div">
             <p>
-              <b>Home Team:</b>
+              <b><p className="team-details-heading">Home Team</p></b>
             </p>
-            <p>{selectedGame?.home_team?.name}</p>
+            <b><p className="team-details random">{selectedGame?.home_team?.name}</p></b>
           </div>
           <div className="flex-div">
             <p>
-              <b>Home Team Score:</b>
+              <b><p className="team-details-heading">Home Team Score</p></b>
             </p>
-            <p>{selectedGame?.home_team_score}</p>
+            <b><p className="team-details random">{selectedGame?.home_team_score}</p></b>
           </div>
           <div className="flex-div">
             <p>
-              <b>Visitor Team:</b>
+              <b><p className="team-details-heading">Visitor Team</p></b>
             </p>
-            <p>{selectedGame?.visitor_team?.full_name}</p>
+            <b><p className="team-details random">{selectedGame?.visitor_team?.full_name}</p></b>
           </div>
           <div className="flex-div">
             <p>
-              <b>Visitor Team Score:</b>
+              <b><p className="team-details-heading">Visitor Team Score</p></b>
             </p>
-            <p>{selectedGame?.visitor_team_score}</p>
+            <b><p className="team-details random">{selectedGame?.visitor_team_score}</p></b>
           </div>
         </>
       )}
