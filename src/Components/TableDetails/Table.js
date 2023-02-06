@@ -4,15 +4,7 @@ import { BsFillCaretUpFill } from "react-icons/bs";
 import { API_CALL } from "../../Constant";
 import "./style.css";
 
-const Table = ({ teams, handleChange, setTeams }) => {
-
-  var sortList = () => {
-    var cityArray = teams;
-    cityArray.sort().reverse();
-    console.log(cityArray, "cityArray");
-    setTeams(cityArray);
-  };
-
+const Table = ({ teams, handleChange }) => {
   return (
     <div>
       <div className="table">
@@ -20,16 +12,7 @@ const Table = ({ teams, handleChange, setTeams }) => {
           <thead className="table-dark">
             <tr className="table-headings">
               <th scope="col">Team Name</th>
-              <th scope="col">
-                City
-                <span>
-                  <BsFillCaretUpFill
-                    onClick={() => {
-                      return sortList();
-                    }}
-                  />{" "}
-                </span>
-              </th>
+              <th scope="col">City</th>
               <th scope="col">Abbreviation</th>
               <th scope="col">Conference</th>
               <th scope="col">Division</th>

@@ -51,14 +51,6 @@ const Home = () => {
     setCurrentPage(pageNumber);
   };
 
-  var sortList = () => {
-    var cityArray = teams;
-    cityArray.sort().reverse();
-    console.log(cityArray, "cityArray");
-    setTeams(cityArray);
-    console.log(cityArray);
-  };
-
   var handleChange = (id) => {
     setIsSelected(id);
     var selectedGames = games.filter((item) => {
@@ -114,7 +106,6 @@ const Home = () => {
                 <Table
                   teams={search ? filteredCoins : currentTeams}
                   handleChange={handleChange}
-                  setTeams={setTeams}
                 />
               )}
               <Offcanvas
@@ -139,7 +130,6 @@ const Home = () => {
               teamsPerPage={teamsPerPage}
               totalTeams={teams.length}
               paginate={paginate}
-              // sortList={sortList}
             />
           )}
         </div>

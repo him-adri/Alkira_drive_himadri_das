@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## About The Project
+This is a react app, where I have fetched data from a api and displayed it. The api I had used is the balldontlie api. The api is fetched in the Home page present in the Page Folder. The details then fetched by the api is diplayed in the form of a table. The details are passed as a prop in the Table component in the Components Folder. 
+
+The Home page further contains a Serach Bar which is present in the Search component in the Components Folder. I am filtering the Teams by Team Name, city, their abbreviations, Division and Conference. It is done in the in Home Page in the Page Folder. 
+
+There is a feature of Pagination in the Website. 
+
+Whne you'll click on a specfic team details row, you can see a sidebar emerging from the right hand side, where you can see the details of the specif team. 
+
 ## Available Scripts
 
 In the project directory, you can run:
